@@ -1,10 +1,40 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginImg from "../../src/assets/signup.png";
+import { toast } from "react-toastify";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
+    const { userLogin, setUser, googleLogin } = useContext(AuthContext)
+    const location = useLocation();
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
+
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        userLogin(email, password)
+            .then((result) => {
+                const user = result.user;
+                setUser(user);
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch(error => toast.error('Input valid login info'));
+
+    };
+
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(() => {
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch(error => toast.error('Login Failed'));
+    };
 
     return (
         <div className="lg:flex items-center w-11/12 max-w-[1340px] mx-auto rounded-2xl mt-10 bg-black shadow-lg shadow-red-800 mb-10">
@@ -12,11 +42,11 @@ const Login = () => {
                 <div className="py-5">
                     <div className="md:w-8/12 mx-auto flex flex-col justify-center items-center text-center gap-4 ">
                         <h1 className="text-2xl lg:text-5xl font-extrabold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Login</h1>
-                        <p className="font-medium text-gray-600 my-4">Access all Discount Pro coupons instantly by signing in to your account.</p>
+                        <p className="font-medium text-gray-600 my-4">Login today to unlock exclusive reviews, insights, and recommendations for your favorite games.</p>
                     </div>
 
                     <div className="card w-11/12 mx-auto bg-base-300 lg:max-w-screen-md shrink-0 items-center">
-                        <form className="card-body w-full">
+                        <form onSubmit={handleSubmit} className="card-body w-full">
                             <div className="flex flex-col w-full">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -55,7 +85,7 @@ const Login = () => {
                             </div>
                             <div className="flex flex-col justify-center items-center">
                                 <p>Or</p>
-                                <button className="btn">Continue with Google
+                                <button onClick={handleGoogleLogin} className="btn">Continue with Google
                                     <img width="48" height="48" src="https://img.icons8.com/color/48/google-logo.png" alt="google-logo" />
                                 </button>
                             </div>

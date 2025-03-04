@@ -1,7 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import { MdOutlineDarkMode } from "react-icons/md";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const NavBar = () => {
+    const {user, logOut} = useContext(AuthContext)
+
     return (
         <div className="w-11/12 max-w-[1340px] mx-auto">
             <div className="navbar bg-base-100">
