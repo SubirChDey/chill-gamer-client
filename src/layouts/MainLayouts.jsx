@@ -4,8 +4,8 @@ import Footer from "../components/Footer";
 
 const MainLayouts = () => {
     return (
-        <div className="w-11/12 max-w-[1340px] mx-auto">
-            <NavBar></NavBar>
+        <div className="">
+            <div className="min-w-full sticky top-0 z-50"><NavBar></NavBar></div>
             <Outlet></Outlet>
             <Footer></Footer>
 
