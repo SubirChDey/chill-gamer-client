@@ -6,6 +6,10 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import AllReviews from "../pages/AllReviews";
 import ResetPassword from "../pages/ResetPassword";
+import PrivateRoutes from "./PrivateRoutes";
+import AddReview from "../pages/AddReview";
+import MyReviews from "../pages/MyReviews";
+import WatchList from "../pages/WatchList";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +23,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/reviews",
-        element: <AllReviews></AllReviews>
+        element: <PrivateRoutes>
+          <AllReviews></AllReviews>
+        </PrivateRoutes>
       },
       {
         path: "/register",
@@ -33,7 +39,25 @@ const router = createBrowserRouter([
         path: "/reset",
         element: <ResetPassword></ResetPassword>
       },
-    
+      {
+        path: "/addReview",
+        element: <PrivateRoutes>
+          <AddReview></AddReview>
+        </PrivateRoutes>
+      },
+      {
+        path: "/myReviews",
+        element: <PrivateRoutes>
+          <MyReviews></MyReviews>
+        </PrivateRoutes>
+      },
+      {
+        path: "/watchlist",
+        element: <PrivateRoutes>
+          <WatchList></WatchList>
+        </PrivateRoutes>
+      },
+
 
     ]
   },

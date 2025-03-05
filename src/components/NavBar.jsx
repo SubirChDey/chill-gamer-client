@@ -1,10 +1,26 @@
 import { Link, NavLink } from "react-router-dom";
 import { MdOutlineDarkMode } from "react-icons/md";
-import { useContext } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import { FaUserTie } from "react-icons/fa";
 
 const NavBar = () => {
-    const {user, logOut} = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
+
+    const [showSpacs, setShowSpacs] = useState(false);
+    const spacsRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (spacsRef.current && !spacsRef.current.contains(event.target)) {
+                setShowSpacs(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
     return (
         <div className="w-11/12 max-w-[1340px] mx-auto">
@@ -17,8 +33,13 @@ const NavBar = () => {
                         <ul
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                            <NavLink> Home</NavLink>
-                            <NavLink> All Reviews</NavLink>
+                            <NavLink to={'/'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> Home</NavLink>
+                            <NavLink to={'/reviews'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> All Reviews</NavLink>
+                            <NavLink to={'/addReview'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> Add Review</NavLink>
+                            <NavLink to={'/myReviews'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> My Reviews</NavLink>
+                            <NavLink to={'/watchlist'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> Watchlist</NavLink>
+
+                            <Link className="flex items-center text-xl gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded"><MdOutlineDarkMode /></Link>
                         </ul>
                     </div>
                     {/* <Link to={'/'} className="btn btn-ghost text-xl"><i>Chill Gamer</i></Link> */}
@@ -31,13 +52,48 @@ const NavBar = () => {
                     <ul className="menu menu-horizontal px-1 gap-2">
                         <NavLink to={'/'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> Home</NavLink>
                         <NavLink to={'/reviews'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> All Reviews</NavLink>
-                        <NavLink to={'/register'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> More</NavLink>
+
+                        {
+                            user && user?.email ? <div className="relative" ref={spacsRef}>
+                                <button onClick={() => setShowSpacs(!showSpacs)} className="flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded">
+                                    My Spacs
+                                </button>
+                                {showSpacs && (
+                                    <div className="absolute bg-white shadow-md rounded mt-1 py-2 w-40">
+                                        <NavLink to={'/addReview'} className={({ isActive }) => `block px-4 py-2 text-lg hover:bg-gray-200 ${isActive ? "text-red-700 underline" : ""}`}> Add Review</NavLink>
+                                        <NavLink to={'/myReviews'} className={({ isActive }) => `block px-4 py-2 text-lg hover:bg-gray-200 ${isActive ? "text-red-700 underline" : ""}`}> My Reviews</NavLink>
+                                        <NavLink to={'/watchlist'} className={({ isActive }) => `block px-4 py-2 text-lg hover:bg-gray-200 ${isActive ? "text-red-700 underline" : ""}`}> Watchlist</NavLink>
+                                    </div>
+                                )}
+                            </div> : ''
+                        }
+
+                        {/* <div className="relative">
+                            <button onClick={() => setShowSpacs(!showSpacs)} className="flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded">
+                                My Spacs
+                            </button>
+                            {showSpacs && (
+                                <div className="absolute bg-white shadow-md rounded mt-1 py-2 w-40">
+                                    <NavLink to={'/addReview'} className={({ isActive }) => `block px-4 py-2 text-lg hover:bg-gray-200 ${isActive ? "text-red-700 underline" : ""}`}> Add Review</NavLink>
+                                    <NavLink to={'/myReviews'} className={({ isActive }) => `block px-4 py-2 text-lg hover:bg-gray-200 ${isActive ? "text-red-700 underline" : ""}`}> My Reviews</NavLink>
+                                    <NavLink to={'/watchlist'} className={({ isActive }) => `block px-4 py-2 text-lg hover:bg-gray-200 ${isActive ? "text-red-700 underline" : ""}`}> Watchlist</NavLink>
+                                </div>
+                            )}
+                        </div> */}
+
+                        {/* <NavLink to={'/addReview'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> Add Review</NavLink>
+                        <NavLink to={'/myReviews'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> My Reviews</NavLink>
+                        <NavLink to={'/watchlist'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> Watchlist</NavLink> */}
+
                         <Link className="flex items-center text-xl gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded"><MdOutlineDarkMode /></Link>
 
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <Link to={'/login'}>Login</Link>
+                <div className="navbar-end gap-2">
+                    {
+                        user && user?.email ? <div className="flex gap-2 items-center"> <img className="rounded-full w-10 h-10 hidden md:block" src={user?.photoURL} alt="" /> <Link to='/' className="btn btn-success text-white" onClick={logOut}> Log Out</Link></div> : <div className="flex gap-2 items-center"><FaUserTie className="w-10 h-10 hidden md:block"></FaUserTie> <Link to='/login' className="btn btn-success text-white">Login</Link></div>
+                    }
+
                 </div>
             </div>
 
