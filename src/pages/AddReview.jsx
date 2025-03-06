@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 
 
 const AddReview = () => {
@@ -27,6 +28,40 @@ const AddReview = () => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+    const form = e.target;
+    const gameCover = form.gameCover.value;
+    const gameTitle = form.gameTitle.value;
+    const reviewDescription = form.reviewDescription.value;
+    const rating = form.rating.value;
+    const publishingYear = form.publishingYear.value;
+    const genre = form.genre.value;
+    const userEmail = form.userEmail;
+    const userName = form.userName;
+
+    const newReview = { gameCover, gameTitle, reviewDescription, rating, publishingYear, genre, userEmail, userEmail };
+
+    //send data to the server
+    fetch('http://localhost:5000/review', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(newReview)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({   
+            title: "Success",
+            text: "Review Successfully Submitted",        
+            icon: "success",            
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+
+      })
 
     // Form validation
     if (!review.gameTitle || !review.reviewDescription || !review.rating) {
@@ -43,7 +78,7 @@ const AddReview = () => {
 
     console.log("Review Submitted:", reviewData);
 
-    toast.success("Review submitted successfully!");
+    // toast.success("Review submitted successfully!");
 
     setReview({
       gameCover: "",
@@ -179,7 +214,7 @@ const AddReview = () => {
 
           <button
             type="submit"
-            className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
           >
             Submit Review
           </button>

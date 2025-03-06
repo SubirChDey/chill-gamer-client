@@ -25,9 +25,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/reviews",
-        element: <PrivateRoutes>
-          <AllReviews></AllReviews>
-        </PrivateRoutes>
+        element: <AllReviews></AllReviews>
+        
       },
       {
         path: "/register",
