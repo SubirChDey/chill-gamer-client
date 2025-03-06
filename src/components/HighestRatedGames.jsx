@@ -1,7 +1,9 @@
 import React from 'react'
+import { useLoaderData } from 'react-router-dom'
 import { Typewriter } from 'react-simple-typewriter'
 
 const HighestRatedGames = () => {
+    const reviews = useLoaderData();
     return (
         <div>
             <h3 className='text-center'>
@@ -18,6 +20,7 @@ const HighestRatedGames = () => {
                     />
                 </span>
             </h3>
+            <p>review {reviews.length}</p>
 
         </div>
     )
