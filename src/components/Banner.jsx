@@ -34,7 +34,7 @@ const Slider = () => {
                 {images.map((img, index) => (
                     <div
                         key={index}
-                        className={`carousel-item relative w-full ${currentSlide === index ? "block" : "hidden"}`}
+                        className={`carousel-item relative w-full md:h-[500px] ${currentSlide === index ? "block" : "hidden"}`}
                     >
                         <img src={img} className="w-full object-cover" alt={`Slide ${index + 1}`} />
                         <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
