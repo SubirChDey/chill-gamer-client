@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom"
 import signupimg from "../../src/assets/signup.png";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const Register = () => {
     const { createNewUser, setUser, googleLogin, manageProfile } = useContext(AuthContext);
@@ -28,11 +29,19 @@ const Register = () => {
             return;
         }
 
+      
         createNewUser(email, password)
             .then(result => {
                 const user = result.user;
                 manageProfile(name, photo);
                 setUser(user);
+                Swal.fire({
+                    position: "top-center",
+                    icon: "success",
+                    title: "Registration Successfull",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 navigate(location?.state ? location.state : '/');
             })
             .catch(error => toast.error('Input valid login info'));
