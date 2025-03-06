@@ -13,7 +13,6 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
 
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -29,31 +28,25 @@ const Login = () => {
                     title: "Login Successfully",
                     showConfirmButton: false,
                     timer: 1500
-                  });                  
-                //   navigate(from, { replace: true });
+                });
                 navigate(location?.state ? location.state : '/');
-                // Swal.fire({
-                //     title: 'Are you sure?',
-                //     text: 'You won\'t be able to revert this!',
-                //     icon: 'warning',
-                //     showCancelButton: true,
-                //     confirmButtonText: 'Yes, delete it!',
-                //     cancelButtonText: 'No, cancel!',
-                //   }).then((result) => {
-                //     if (result.isConfirmed) {
-                //       Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
-                //     } else {
-                //       Swal.fire('Cancelled', 'Your file is safe :)', 'error');
-                //     }
-                //   });
+
             })
             .catch(error => toast.error('Input valid login info'));
+        // .catch(error => showError(error));           
 
     };
 
     const handleGoogleLogin = () => {
         googleLogin()
             .then(() => {
+                Swal.fire({
+                    position: "top-center",
+                    icon: "success",
+                    title: "Login Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 navigate(location?.state ? location.state : '/');
             })
             .catch(error => toast.error('Login Failed'));

@@ -51,6 +51,13 @@ const Register = () => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then(() => {
+                Swal.fire({
+                    position: "top-center",
+                    icon: "success",
+                    title: "Registration Successfull",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 navigate(location?.state ? location.state : '/');
             })
             .catch(error => toast.error(error.message));
