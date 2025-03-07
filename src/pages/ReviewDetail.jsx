@@ -48,7 +48,9 @@ const ReviewDetail = () => {
                     <h3 className="text-3xl text-[#09080F] font-semibold my-2">Name: {review.gameTitle}</h3>
                     <p className="text-xl text-gray-700 font-semibold my-2">Publishing Year: {review.publishingYear}</p>
 
-                    <p className="text-gray-600 my-2"> Description: {review.reviewDescription} </p>
+                    <p className="text-gray-600 my-2"> Genre: {review.genre} </p>
+                    <p className="text-gray-600 my-2"> Name: {review.name} </p>
+                    <p className="text-gray-600 my-2"> email: {review.email} </p>
 
                    
                     <div className="flex items-center gap-1">
