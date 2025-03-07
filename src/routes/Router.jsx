@@ -53,14 +53,15 @@ const router = createBrowserRouter([
         path: "/myReviews",
         element: <PrivateRoutes>
           <MyReviews></MyReviews>
-        </PrivateRoutes>
+        </PrivateRoutes>,
+        loader: () => fetch('http://localhost:5000/review'),
       },
       {
         path: "/review/:id",
         element: <PrivateRoutes>
           <ReviewDetail></ReviewDetail>
         </PrivateRoutes>,
-        loader: () => fetch('http://localhost:5000/review'),
+        loader: ({params}) => fetch(`http://localhost:5000/review/${params.id}`),
         // loader: async ({ params }) => {
           
         //   const res = await fetch('http://localhost:5173/review')
@@ -71,10 +72,11 @@ const router = createBrowserRouter([
         // },
       },
       {
-        path: "/watchlist",
+        path: "/myWatchlist",
         element: <PrivateRoutes>
-          <WatchList></WatchList>
-        </PrivateRoutes>
+          <WatchList></WatchList>          
+        </PrivateRoutes>,
+        loader: () => fetch('http://localhost:5000/watchlist')
       },
       {
         path: "/profile",

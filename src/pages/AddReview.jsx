@@ -1,12 +1,15 @@
 import Lottie from "lottie-react";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
+import { AuthContext } from "../provider/AuthProvider";
 
 
 const AddReview = () => {
+  const { user } = useContext(AuthContext)
+
   const [review, setReview] = useState({
     gameCover: "",
     gameTitle: "",
@@ -16,8 +19,8 @@ const AddReview = () => {
     genre: "Action",
   });
 
-  const userEmail = "user@example.com";
-  const userName = "John Doe";
+  const userEmail = `${user.email}`;
+  const userName = `${user.displayName}`;
 
   const genres = ["Action", "RPG", "Adventure", "Horror", "Strategy"];
 
@@ -35,10 +38,12 @@ const AddReview = () => {
     const rating = form.rating.value;
     const publishingYear = form.publishingYear.value;
     const genre = form.genre.value;
-    const userEmail = form.userEmail;
-    const userName = form.userName;
+    const userEmail = form.email.value;
+    const userName = form.name.value;
+    console.log(userEmail, userName);
 
-    const newReview = { gameCover, gameTitle, reviewDescription, rating, publishingYear, genre, userEmail, userEmail };
+
+    const newReview = { gameCover, gameTitle, reviewDescription, rating, publishingYear, genre, userEmail, userName };
 
     //send data to the server
     fetch('http://localhost:5000/review', {
@@ -52,10 +57,10 @@ const AddReview = () => {
       .then(data => {
         console.log(data);
         if (data.insertedId) {
-          Swal.fire({   
+          Swal.fire({
             title: "Success",
-            text: "Review Successfully Submitted",        
-            icon: "success",            
+            text: "Review Successfully Submitted",
+            icon: "success",
             showConfirmButton: false,
             timer: 1500
           });
@@ -194,7 +199,7 @@ const AddReview = () => {
 
           <div>
             <label className="block font-medium">Your Email:</label>
-            <input
+            <input name="email"
               type="email"
               value={userEmail}
               readOnly
@@ -205,6 +210,7 @@ const AddReview = () => {
           <div>
             <label className="block font-medium">Your Name:</label>
             <input
+              name="name"
               type="text"
               value={userName}
               readOnly

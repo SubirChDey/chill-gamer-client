@@ -1,14 +1,10 @@
-import { useEffect, useState } from "react";
+
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { MdFavoriteBorder, MdOutlineStarHalf } from "react-icons/md";
-import { useLoaderData, useParams } from "react-router-dom"
+import { useLoaderData } from "react-router-dom"
 
 const ReviewDetail = () => {
-    const reviews = useLoaderData()
-    const { id } = useParams()
-    const [review, setReview] = useState({})
-
-    console.log("ID from Params:", id);
+    const review = useLoaderData()
 
 
     const renderStars = (rating) => {
@@ -24,13 +20,26 @@ const ReviewDetail = () => {
         }
         return stars;
     };
+    const handleAddToWatchlist = () => {
+        fetch(`http://localhost:5000/watchlist`, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(review)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('Added to favorite', data);
+                if (data.insertedId) {
+                    alert('Data added to watchlist')
+                }
 
-    useEffect(() => {
-        const singleReview = reviews.find(review => review._id === id)
-        console.log(singleReview);
-        console.log("Data from Loader:", singleReview);
-        setReview(singleReview)
-    }, [reviews, id])
+            })
+
+
+    }
+
 
     return (
         <div>
@@ -52,7 +61,7 @@ const ReviewDetail = () => {
                     <p className="text-gray-600 my-2"> Name: {review.name} </p>
                     <p className="text-gray-600 my-2"> email: {review.email} </p>
 
-                   
+
                     <div className="flex items-center gap-1">
                         <h3 className="font-bold">Rating </h3> <MdOutlineStarHalf className="text-yellow-300 w-5 h-5" />
                     </div>
@@ -60,7 +69,7 @@ const ReviewDetail = () => {
                         <div className="flex gap-1">{renderStars(review.rating)}</div> <div>{review.rating}</div>
                     </div>
                     <div className="flex justify-start my-3">
-                        <div className="flex items-center gap-1 bg-[#9538E2] py-2 px-4 rounded-full text-white"><button> Add to WatchList </button> </div>                        
+                        <div onClick={handleAddToWatchlist} className="flex items-center gap-1 bg-[#9538E2] py-2 px-4 rounded-full text-white"><button > Add to WatchList </button> </div>
                     </div>
                 </div>
             </div>

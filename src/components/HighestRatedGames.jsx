@@ -1,14 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom'
 import { Typewriter } from 'react-simple-typewriter'
 
 const HighestRatedGames = () => {
-    const reviews = useLoaderData();
+    // const reviews = useLoaderData();
 
-    const topRatedGames = [...reviews]
-        .sort((a, b) => b.rating - a.rating)
-        .slice(0, 6);
+    // const topRatedGames = [...reviews]
+    //     .sort((a, b) => b.rating - a.rating)
+    //     .slice(0, 6);
+    
+    const [games, setGames] = useState([]);
+
+    useEffect(() => {
+      const fetchHighestRatedGames = async () => {
+        const response = await fetch('http://localhost:5000/highest-rated-games');
+        const data = await response.json();
+        setGames(data); // Set the fetched data into the state
+      };
+  
+      fetchHighestRatedGames();
+    }, []);
+
 
 
     const renderStars = (rating) => {
@@ -26,7 +39,7 @@ const HighestRatedGames = () => {
     };
 
     return (
-        <div>
+        <div className='md:w-10/12 mx-auto px-4 py-8 my-8'>
             <h3 className='text-center m-10'>
                 {" "}
                 <span className='bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent font-bold text-4xl'>
@@ -43,7 +56,7 @@ const HighestRatedGames = () => {
             </h3>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6  ">
-                {topRatedGames.map((review) => (<div key={review._id} className={`bg-[#1A1A1A]  rounded-lg shadow-md hover:shadow-lg p-4  hover:shadow-[#A91D3A] hover:scale-105 transition-all duration-300`} >
+                {games.map((review) => (<div key={review._id} className={`bg-[#1A1A1A]  rounded-lg shadow-md hover:shadow-lg p-4  hover:shadow-[#A91D3A] hover:scale-105 transition-all duration-300`} >
                     <div data-aos="fade-up" className='flex flex-col h-full justify-between'>
                         <div>
                             <img

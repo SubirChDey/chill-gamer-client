@@ -76,7 +76,7 @@ const NavBar = () => {
                                     <div className="absolute bg-white shadow-md rounded mt-1 py-2 w-40">
                                         <NavLink to={'/addReview'} className={({ isActive }) => `block px-4 py-2 text-lg hover:bg-gray-200 ${isActive ? "text-red-700 underline" : ""}`}> Add Review</NavLink>
                                         <NavLink to={'/myReviews'} className={({ isActive }) => `block px-4 py-2 text-lg hover:bg-gray-200 ${isActive ? "text-red-700 underline" : ""}`}> My Reviews</NavLink>
-                                        <NavLink to={'/watchlist'} className={({ isActive }) => `block px-4 py-2 text-lg hover:bg-gray-200 ${isActive ? "text-red-700 underline" : ""}`}> Watchlist</NavLink>
+                                        <NavLink to={'/myWatchlist'} className={({ isActive }) => `block px-4 py-2 text-lg hover:bg-gray-200 ${isActive ? "text-red-700 underline" : ""}`}> Watchlist</NavLink>
                                         <NavLink to={'/profile'} className={({ isActive }) => `block px-4 py-2 text-lg hover:bg-gray-200 ${isActive ? "text-red-700 underline" : ""}`}> My Profile</NavLink>
                                         
                                     </div>
