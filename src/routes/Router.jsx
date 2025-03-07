@@ -12,6 +12,7 @@ import MyReviews from "../pages/MyReviews";
 import WatchList from "../pages/WatchList";
 import MyProfile from "../pages/MyProfile";
 import UpdateProfile from "../pages/UpdateProfile";
+import ReviewDetail from "../pages/ReviewDetail";
 
 const router = createBrowserRouter([
   {
@@ -22,13 +23,13 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/coffee'),
+        loader: () => fetch('http://localhost:5000/review'),
       },
       {
         path: "/reviews",
         element: <AllReviews></AllReviews>,
-        loader: () => fetch('http://localhost:5000/coffee'),
-        
+        loader: () => fetch('http://localhost:5000/review'),
+
       },
       {
         path: "/register",
@@ -53,6 +54,21 @@ const router = createBrowserRouter([
         element: <PrivateRoutes>
           <MyReviews></MyReviews>
         </PrivateRoutes>
+      },
+      {
+        path: "/review/:id",
+        element: <PrivateRoutes>
+          <ReviewDetail></ReviewDetail>
+        </PrivateRoutes>,
+        loader: () => fetch('http://localhost:5000/review'),
+        // loader: async ({ params }) => {
+          
+        //   const res = await fetch('http://localhost:5173/review')
+        //   const data = await res.json();
+
+        //   const singleReview = data.find(d => d._id == params.id)
+        //   return singleReview
+        // },
       },
       {
         path: "/watchlist",

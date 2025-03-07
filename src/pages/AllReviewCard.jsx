@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const AllReviewCard = ({ review }) => {
-    const { gameCover, gameTitle, reviewDescription, rating, publishingYear } = review;
+    const { _id, gameCover, gameTitle, reviewDescription, rating, publishingYear } = review;
     return (
         <div>
             <div className="card bg-black w-96 shadow-sm">
@@ -18,7 +18,7 @@ const AllReviewCard = ({ review }) => {
                         <p className="text-end text-white text-lg">{publishingYear}</p>
                     </div>
                     <div className="card-actions">
-                        <Link className="btn btn-primary bg-red-800">Explore Details</Link>
+                        <Link to={`/review/${_id}`} className="btn btn-primary bg-red-800">Explore Details</Link>
                     </div>
                 </div>
             </div>
