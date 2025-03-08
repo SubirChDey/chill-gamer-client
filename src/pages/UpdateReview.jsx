@@ -4,12 +4,14 @@ import { Typewriter } from "react-simple-typewriter";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 
 const UpdateReview = () => {
 const reviewData = useLoaderData();
 const { _id} =reviewData
+
+const navigate = useNavigate()
 
   const [review, setReview] = useState( reviewData || {
     gameCover: "",
@@ -59,6 +61,7 @@ const { _id} =reviewData
             timer: 1500
           });
         }
+        navigate('/myReviews');
 
       })
 

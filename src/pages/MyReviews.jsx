@@ -27,7 +27,7 @@ const MyReviews = () => {
     });
   }, []);
 
-  const handleDelete = (_id) => {
+  const handleReviewDelete = (_id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -111,7 +111,7 @@ const MyReviews = () => {
                         <FaRegEdit size={20} />
                       </button>
                     </Link>
-                    <button onClick={() => handleDelete(review._id)}
+                    <button onClick={() => handleReviewDelete(review._id)}
                       className="px-4 py-2 bg-[#A91D3A] cursor-pointer text-white rounded-md shadow-[#A91D3A] hover:bg-[#9c1631] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
                     >
                       <AiOutlineDelete size={20} />
