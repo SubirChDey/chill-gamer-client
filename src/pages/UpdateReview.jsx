@@ -5,81 +5,85 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 
 const UpdateReview = () => {
-const reviewData = useLoaderData();
-const { _id} =reviewData
+    const reviewData = useLoaderData();
+    const { _id } = reviewData
+    const { user } = useContext(AuthContext)
+    const navigate = useNavigate()
 
-const navigate = useNavigate()
-
-  const [review, setReview] = useState( reviewData || {
-    gameCover: "",
-    gameTitle: "",
-    reviewDescription: "",
-    rating: "",
-    publishingYear: "",
-    genre: "Action",
-  });
-
-  const genres = ["Action", "RPG", "Adventure", "Horror", "Strategy"];
-
-  const handleChange = (e) => {
-    setReview({ ...review, [e.target.name]: e.target.value });
-  };
-
-  // Handle form submission
-  const handleUpdate = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const gameCover = form.gameCover.value;
-    const gameTitle = form.gameTitle.value;
-    const reviewDescription = form.reviewDescription.value;
-    const rating = form.rating.value;
-    const publishingYear = form.publishingYear.value;
-    const genre = form.genre.value;
-
-    const updateReview = {_id, gameCover, gameTitle, reviewDescription, rating, publishingYear, genre };
-
-    //send data to the server
-    fetch(`http://localhost:5000/review/${_id}`, {
-      method: 'PUT',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(updateReview)
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        if (data.modifiedCount) {
-          Swal.fire({
-            title: "Success",
-            text: "Review Updated Successfully",
-            icon: "success",
-            showConfirmButton: false,
-            timer: 1500
-          });
-        }
-        navigate('/myReviews');
-
-      })
-
-    // Form validation
-    if (!review.gameTitle || !review.reviewDescription || !review.rating) {
-      toast.error("Please fill all required fields!");
-      return;
-    }
-
-    setReview({
-      gameCover: "",
-      gameTitle: "",
-      reviewDescription: "",
-      rating: "",
-      publishingYear: "",
-      genre: "Action",
+    const [review, setReview] = useState(reviewData || {
+        gameCover: "",
+        gameTitle: "",
+        reviewDescription: "",
+        rating: "",
+        publishingYear: "",
+        genre: "Action",
     });
-  };
+
+    const userEmail = `${user.email}`;
+    const userName = `${user.displayName}`;
+
+    const genres = ["Action", "RPG", "Adventure", "Horror", "Strategy"];
+
+    const handleChange = (e) => {
+        setReview({ ...review, [e.target.name]: e.target.value });
+    };
+
+    // Handle form submission
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const gameCover = form.gameCover.value;
+        const gameTitle = form.gameTitle.value;
+        const reviewDescription = form.reviewDescription.value;
+        const rating = form.rating.value;
+        const publishingYear = form.publishingYear.value;
+        const genre = form.genre.value;
+
+        const updateReview = { _id, gameCover, gameTitle, reviewDescription, rating, publishingYear, genre };
+
+        //send data to the server
+        fetch(`http://localhost:5000/review/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateReview)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount) {
+                    Swal.fire({
+                        title: "Success",
+                        text: "Review Updated Successfully",
+                        icon: "success",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate('/myReviews');
+                }                
+
+            })
+
+        // Form validation
+        if (!review.gameTitle || !review.reviewDescription || !review.rating) {
+            toast.error("Please fill all required fields!");
+            return;
+        }
+
+        setReview({
+            gameCover: "",
+            gameTitle: "",
+            reviewDescription: "",
+            rating: "",
+            publishingYear: "",
+            genre: "Action",
+        });
+    };
 
     return (
         <div>
@@ -119,7 +123,7 @@ const navigate = useNavigate()
                                 type="text"
                                 name="gameTitle"
                                 value={review.gameTitle}
-                                onChange={handleChange}                                
+                                onChange={handleChange}
                                 className="w-full p-2 border rounded"
                                 placeholder="Enter game name"
                                 required
@@ -181,7 +185,28 @@ const navigate = useNavigate()
                                 </option>
                             ))}
                         </select>
-                    </div>                   
+                    </div>
+
+                    <div>
+                        <label className="block font-medium">Your Email:</label>
+                        <input name="email"
+                            type="email"
+                            value={userEmail}
+                            readOnly
+                            className="w-full p-2 border rounded bg-gray-100 cursor-not-allowed"
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block font-medium">Your Name:</label>
+                        <input
+                            name="name"
+                            type="text"
+                            value={userName}
+                            readOnly
+                            className="w-full p-2 border rounded bg-gray-100 cursor-not-allowed"
+                        />
+                    </div>
 
                     <button
                         type="submit"

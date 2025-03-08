@@ -5,12 +5,12 @@ import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const WatchList = () => {
-  const watchlist = useLoaderData(); // লোডারের মাধ্যমে প্রাপ্ত watchlist ডেটা
+  const watchlist = useLoaderData();
 
-  const [watchlists, setWatchlists] = useState([]); // watchlists স্টেট
+  const [watchlists, setWatchlists] = useState([]);
 
   useEffect(() => {
-    setWatchlists(watchlist); // প্রথমবার কম্পোনেন্ট লোড হলে watchlists স্টেট আপডেট
+    setWatchlists(watchlist);
   }, [watchlist]);
 
   useEffect(() => {
@@ -47,11 +47,10 @@ const WatchList = () => {
                 text: "Watchlist has been deleted.",
                 icon: "success",
               });
-
-              // ডিলিট করার পর স্টেট আপডেট করা
+             
               const remaining = watchlists.filter((watch) => watch._id !== _id);
               console.log(remaining);
-              setWatchlists(remaining); // স্টেটে আপডেট করুন
+              setWatchlists(remaining);
             }
           })
           .catch((error) => {

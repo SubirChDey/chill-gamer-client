@@ -62,16 +62,15 @@ const router = createBrowserRouter([
         element: <PrivateRoutes>
           <UpdateReview></UpdateReview>
         </PrivateRoutes>,
-        loader: ({params}) => fetch(`http://localhost:5000/review/${params.id}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/review/${params.id}`),
       },
       {
         path: "/review/:id",
-        element: <PrivateRoutes>
-          <ReviewDetail></ReviewDetail>
-        </PrivateRoutes>,
-        loader: ({params}) => fetch(`http://localhost:5000/review/${params.id}`),
+        element:
+          <ReviewDetail></ReviewDetail>,
+        loader: ({ params }) => fetch(`http://localhost:5000/review/${params.id}`),
         // loader: async ({ params }) => {
-          
+
         //   const res = await fetch('http://localhost:5173/review')
         //   const data = await res.json();
 
@@ -82,7 +81,7 @@ const router = createBrowserRouter([
       {
         path: "/myWatchlist",
         element: <PrivateRoutes>
-          <WatchList></WatchList>          
+          <WatchList></WatchList>
         </PrivateRoutes>,
         loader: () => fetch('http://localhost:5000/watchlist')
       },

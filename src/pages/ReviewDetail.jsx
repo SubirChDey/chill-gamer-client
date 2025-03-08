@@ -1,11 +1,14 @@
 
+import { useContext } from "react";
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { MdFavoriteBorder, MdOutlineStarHalf } from "react-icons/md";
 import { useLoaderData } from "react-router-dom"
+import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const ReviewDetail = () => {
     const review = useLoaderData()
-
+    const { user } = useContext(AuthContext)
 
     const renderStars = (rating) => {
         const stars = [];
@@ -58,8 +61,8 @@ const ReviewDetail = () => {
                     <p className="text-xl text-gray-700 font-semibold my-2">Publishing Year: {review.publishingYear}</p>
 
                     <p className="text-gray-600 my-2"> Genre: {review.genre} </p>
-                    <p className="text-gray-600 my-2"> Name: {review.name} </p>
-                    <p className="text-gray-600 my-2"> email: {review.email} </p>
+                    <p className="text-gray-600 my-2"> Name: {review.userName} </p>
+                    <p className="text-gray-600 my-2"> email: {review.userEmail} </p>
 
 
                     <div className="flex items-center gap-1">
@@ -69,7 +72,18 @@ const ReviewDetail = () => {
                         <div className="flex gap-1">{renderStars(review.rating)}</div> <div>{review.rating}</div>
                     </div>
                     <div className="flex justify-start my-3">
-                        <div onClick={handleAddToWatchlist} className="flex items-center gap-1 bg-[#9538E2] py-2 px-4 rounded-full text-white"><button className="cursor-pointer" > Add to WatchList </button> </div>
+                        <div onClick={() => {
+                            if (user && user.email) {
+                                handleAddToWatchlist();
+                            } else {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Please log in to save your watchlist.',
+                                    icon: 'error',
+                                    confirmButtonText: 'Okay'
+                                  });
+                            }
+                        }} className="flex items-center gap-1 bg-[#9538E2] py-2 px-4 rounded-full text-white"><button className="cursor-pointer" > Add to WatchList </button> </div>
                     </div>
                 </div>
             </div>

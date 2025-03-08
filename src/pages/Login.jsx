@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginImg from "../../src/assets/signup.png";
@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 
 const Login = () => {
     const { userLogin, setUser, googleLogin } = useContext(AuthContext)
+    // const { user, logOut } = useContext(AuthContext)
     const location = useLocation();
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
