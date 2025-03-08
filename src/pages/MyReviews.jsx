@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useLoaderData } from 'react-router-dom'
 import { AuthContext } from '../provider/AuthProvider';
 import { FaRegEdit } from 'react-icons/fa';
@@ -8,6 +8,14 @@ import Swal from 'sweetalert2';
 
 const MyReviews = () => {
   const allReviews = useLoaderData();
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    setReviews(allReviews);
+  }, [allReviews]);
+  
+  console.log(reviews);
+
   const { user } = useContext(AuthContext)
 
 
@@ -41,6 +49,9 @@ const MyReviews = () => {
                 text: "Your file has been deleted.",
                 icon: "success"
               });
+              const remaining = reviews.filter(rev => rev._id !== _id);
+              console.log(remaining);
+              setReviews(remaining);
             }
           })
           .catch(error => {
@@ -56,7 +67,7 @@ const MyReviews = () => {
   };
 
 
-  const myReviews = allReviews.filter(review => review.userEmail === user.email)
+  const myReviews = reviews.filter(review => review.userEmail === user.email)
   return (
     <div>
       <div>
