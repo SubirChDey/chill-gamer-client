@@ -53,7 +53,7 @@ const WatchList = () => {
                   <td className="py-2 px-4">{review.genre}</td>
                   <td className="px-2 py-2 ">                    
                     <button
-                      className="px-4 py-2    bg-[#A91D3A] text-white rounded-md shadow-[#A91D3A] hover:bg-[#9c1631] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+                      className="px-4 py-2    bg-[#A91D3A] cursor-pointer text-white rounded-md shadow-[#A91D3A] hover:bg-[#9c1631] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
                     >
                       <AiOutlineDelete size={20} />
                     </button>

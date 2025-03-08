@@ -69,7 +69,7 @@ const ReviewDetail = () => {
                         <div className="flex gap-1">{renderStars(review.rating)}</div> <div>{review.rating}</div>
                     </div>
                     <div className="flex justify-start my-3">
-                        <div onClick={handleAddToWatchlist} className="flex items-center gap-1 bg-[#9538E2] py-2 px-4 rounded-full text-white"><button > Add to WatchList </button> </div>
+                        <div onClick={handleAddToWatchlist} className="flex items-center gap-1 bg-[#9538E2] py-2 px-4 rounded-full text-white"><button className="cursor-pointer" > Add to WatchList </button> </div>
                     </div>
                 </div>
             </div>

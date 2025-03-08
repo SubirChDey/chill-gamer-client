@@ -13,6 +13,7 @@ import WatchList from "../pages/WatchList";
 import MyProfile from "../pages/MyProfile";
 import UpdateProfile from "../pages/UpdateProfile";
 import ReviewDetail from "../pages/ReviewDetail";
+import UpdateReview from "../pages/UpdateReview";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,13 @@ const router = createBrowserRouter([
           <MyReviews></MyReviews>
         </PrivateRoutes>,
         loader: () => fetch('http://localhost:5000/review'),
+      },
+      {
+        path: "/updateReview/:id",
+        element: <PrivateRoutes>
+          <UpdateReview></UpdateReview>
+        </PrivateRoutes>,
+        loader: ({params}) => fetch(`http://localhost:5000/review/${params.id}`),
       },
       {
         path: "/review/:id",
