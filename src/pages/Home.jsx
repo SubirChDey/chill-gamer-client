@@ -2,6 +2,7 @@ import React from 'react'
 import Banner from '../components/Banner'
 import HighestRatedGames from '../components/HighestRatedGames'
 import LatestGames from '../components/LatestGames'
+import FAQ from '../components/FAQ'
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
         <Banner></Banner>
         <HighestRatedGames></HighestRatedGames>
         <LatestGames></LatestGames>
+        <FAQ></FAQ>
     </div>
   )
 }
