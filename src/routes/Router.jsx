@@ -14,6 +14,7 @@ import MyProfile from "../pages/MyProfile";
 import UpdateProfile from "../pages/UpdateProfile";
 import ReviewDetail from "../pages/ReviewDetail";
 import UpdateReview from "../pages/UpdateReview";
+import Contact from "../pages/Contact";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,12 @@ const router = createBrowserRouter([
         path: "/reviews",
         element: <AllReviews></AllReviews>,
         loader: () => fetch('http://localhost:5000/review'),
+
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>
+        
 
       },
       {

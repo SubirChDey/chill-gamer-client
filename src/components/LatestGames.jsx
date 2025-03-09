@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 import { Link, useLoaderData } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
 
 
 const LatestGames = () => {
@@ -19,11 +20,26 @@ const LatestGames = () => {
     }, []);
 
     return (
-        <div className="pb-14">
-            <header className="items-center text-center w-10/12 mx-auto py-10">
-                <h3 className="text-5xl text-violet-800 font-semibold pb-4">Our Latest Games</h3>
-                <p className="text-gray-600">Discover New Adventures, Thrilling Challenges, and Endless Fun – Explore Our Latest Games Now!</p>
-            </header>
+        <div className="pb-14">           
+            <div>
+                <div className='text-center m-10'>
+                    <h3 className='mb-4'>
+                        {" "}
+                        <span className='bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent font-bold text-4xl'>
+                            <Typewriter
+                                words={["Our Latest Games"]}
+                                loop={Infinity}
+                                cursor
+                                cursorStyle="-"
+                                typeSpeed={80}
+                                deleteSpeed={50}
+                                delaySpeed={1000}
+                            />
+                        </span>
+                    </h3>
+                    <p className='text-center'>Discover New Adventures, Thrilling Challenges, and Endless Fun – Explore Our Latest Games Now!</p>
+                </div>
+            </div>
             <div className="bg-gray-400">
                 <Marquee pauseOnHover='true' className="">
                     {
@@ -37,7 +53,7 @@ const LatestGames = () => {
                             <div className="card bg-base-100 w-96 shadow-sm">
                                 <figure>
                                     <img className="px-4"
-                                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                                        src={game.gameCover}
                                         alt={game.gameTitle} />
                                 </figure>
                                 <div className="card-body">

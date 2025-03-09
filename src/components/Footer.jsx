@@ -1,43 +1,34 @@
+import logo from "../../src/assets/signup.png";
 
 const Footer = () => {
     return (
-        <div className="mt-20 mx-auto bg-black text-white bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 ">
-            <footer className="footer sm:footer-horizontal w-11/12 mx-auto  p-10">
+        <div className="mt-20 mx-auto bg-black text-white bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mb-8 ">
+            <footer className="footer sm:footer-horizontal w-11/12 mx-auto  pt-10">
+                <div className="flex flex-col text-center items-center">
+                    <img className="w-32" src={logo} alt="" />
+                    <h3 className=" text-center mb-4">All rights reserved by &copy; Chill Gamer</h3>
+                </div>
                 <nav>
                     <h6 className="footer-title">Services</h6>
-                    <a className="link link-hover">Branding</a>
-                    <a className="link link-hover">Design</a>
-                    <a className="link link-hover">Marketing</a>
-                    <a className="link link-hover">Advertisement</a>
+                    <a className="link link-hover">Gaming</a>
+                    <a className="link link-hover">Reviews</a>
+                    <a className="link link-hover">Community</a>
+                    <a className="link link-hover">Popular Games</a>
                 </nav>
                 <nav>
                     <h6 className="footer-title">Company</h6>
                     <a className="link link-hover">About us</a>
                     <a className="link link-hover">Contact</a>
-                    <a className="link link-hover">Jobs</a>
-                    <a className="link link-hover">Press kit</a>
-                </nav>
-                <nav>
-                    <h6 className="footer-title">Legal</h6>
                     <a className="link link-hover">Terms of use</a>
-                    <a className="link link-hover">Privacy policy</a>
-                    <a className="link link-hover">Cookie policy</a>
+                    <a className="link link-hover">Privacy Policy</a>
                 </nav>
-                <form>
-                    <h6 className="footer-title">Newsletter</h6>
-                    <fieldset className="w-80">
-                        <label>Enter your email address</label>
-                        <div className="join">
-                            <input
-                                type="text"
-                                placeholder="username@site.com"
-                                class="input input-bordered join-item" />
-                            <button className="btn btn-primary join-item">Subscribe</button>
-                        </div>
-                    </fieldset>
-                </form>
+                <nav className="items-center text-center">
+                    <h6 className="footer-title">Social</h6>
+                    <a href="https://www.facebook.com/SubirChDey" target="_blank" className="link link-hover"> <img className="w-6" src="https://img.icons8.com/?size=100&id=uLWV5A9vXIPu&format=png&color=000000" alt="" /> </a>
+                    <a href="https://www.twitter.com/SubirChDey" target="_blank" className="link link-hover"> <img className="w-6" src="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=000000" alt="" /> </a>
+                    <a href="https://www.instagram.com/SubirChDey" target="_blank" className="link link-hover"><img className="w-6" src="https://img.icons8.com/?size=100&id=119026&format=png&color=000000" alt="" /> </a>
+                </nav>
             </footer>
-
         </div>
     );
 };

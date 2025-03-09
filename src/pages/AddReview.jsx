@@ -6,9 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
 
-
 const AddReview = () => {
-  const { user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
 
   const [review, setReview] = useState({
     gameCover: "",
@@ -28,62 +27,40 @@ const AddReview = () => {
     setReview({ ...review, [e.target.name]: e.target.value });
   };
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    const form = e.target;
-    const gameCover = form.gameCover.value;
-    const gameTitle = form.gameTitle.value;
-    const reviewDescription = form.reviewDescription.value;
-    const rating = form.rating.value;
-    const publishingYear = form.publishingYear.value;
-    const genre = form.genre.value;
-    const userEmail = form.email.value;
-    const userName = form.name.value;
-    console.log(userEmail, userName);
-
-
-    const newReview = { gameCover, gameTitle, reviewDescription, rating, publishingYear, genre, userEmail, userName };
-
-    //send data to the server
-    fetch('http://localhost:5000/review', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(newReview)
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        if (data.insertedId) {
-          Swal.fire({
-            title: "Success",
-            text: "Review Successfully Submitted",
-            icon: "success",
-            showConfirmButton: false,
-            timer: 1500
-          });
-        }
-
-      })
-
-    // Form validation
+    
     if (!review.gameTitle || !review.reviewDescription || !review.rating) {
       toast.error("Please fill all required fields!");
       return;
     }
 
-    const reviewData = {
+    const newReview = {
       ...review,
       userEmail,
       userName,
       timestamp: new Date(),
     };
 
-    console.log("Review Submitted:", reviewData);
-
-    // toast.success("Review submitted successfully!");
+    fetch("http://localhost:5000/review", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newReview),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success",
+            text: "Review Successfully Submitted",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
 
     setReview({
       gameCover: "",
@@ -97,10 +74,9 @@ const AddReview = () => {
 
   return (
     <div>
-      <div className="max-w-lg mx-auto mt-10 p-6 bg-white shadow-lg rounded-xl">
-        <h3 className='text-center'>
-          {" "}
-          <span className='bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent font-bold text-4xl'>
+      <div className="max-w-lg mx-auto mt-10 p-6 bg-black text-white shadow-lg rounded-xl">
+        <h3 className="text-center">
+          <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent font-bold text-4xl">
             <Typewriter
               words={["Add New Game Review"]}
               loop={Infinity}
@@ -113,32 +89,30 @@ const AddReview = () => {
           </span>
         </h3>
 
-        <form onSubmit={handleSubmit} className="space-y-2">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <div>
-              <label className="block font-medium">Game Cover URL:</label>
-              <input
-                type="url"
-                name="gameCover"
-                value={review.gameCover}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                placeholder="Enter image URL"
-              />
-            </div>
+            <label className="block font-medium">Game Cover URL:</label>
+            <input
+              type="url"
+              name="gameCover"
+              value={review.gameCover}
+              onChange={handleChange}
+              className="w-full p-2 border rounded bg-gray-800 text-white"
+              placeholder="Enter image URL"
+            />
+          </div>
 
-            <div>
-              <label className="block font-medium">Game Title:</label>
-              <input
-                type="text"
-                name="gameTitle"
-                value={review.gameTitle}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                placeholder="Enter game name"
-                required
-              />
-            </div>
+          <div>
+            <label className="block font-medium">Game Title:</label>
+            <input
+              type="text"
+              name="gameTitle"
+              value={review.gameTitle}
+              onChange={handleChange}
+              className="w-full p-2 border rounded bg-gray-800 text-white"
+              placeholder="Enter game name"
+              required
+            />
           </div>
 
           <div>
@@ -147,7 +121,7 @@ const AddReview = () => {
               name="reviewDescription"
               value={review.reviewDescription}
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded bg-gray-800 text-white"
               placeholder="Write your review..."
               required
             />
@@ -162,7 +136,7 @@ const AddReview = () => {
               onChange={handleChange}
               min="1"
               max="5"
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded bg-gray-800 text-white"
               required
             />
           </div>
@@ -176,7 +150,7 @@ const AddReview = () => {
               onChange={handleChange}
               min="1980"
               max="2025"
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded bg-gray-800 text-white"
               placeholder="Enter year"
             />
           </div>
@@ -187,7 +161,7 @@ const AddReview = () => {
               name="genre"
               value={review.genre}
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border rounded bg-gray-800 text-white"
             >
               {genres.map((genre) => (
                 <option key={genre} value={genre}>
@@ -199,11 +173,12 @@ const AddReview = () => {
 
           <div>
             <label className="block font-medium">Your Email:</label>
-            <input name="email"
+            <input
+              name="email"
               type="email"
               value={userEmail}
               readOnly
-              className="w-full p-2 border rounded bg-gray-100 cursor-not-allowed"
+              className="w-full p-2 border rounded bg-gray-700 text-gray-400 cursor-not-allowed"
             />
           </div>
 
@@ -214,13 +189,13 @@ const AddReview = () => {
               type="text"
               value={userName}
               readOnly
-              className="w-full p-2 border rounded bg-gray-100 cursor-not-allowed"
+              className="w-full p-2 border rounded bg-gray-700 text-gray-400 cursor-not-allowed"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full p-2 cursor-pointer bg-blue-500 text-white rounded hover:bg-blue-600 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+            className="w-full p-2 cursor-pointer bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white rounded hover:opacity-90"
           >
             Submit Review
           </button>

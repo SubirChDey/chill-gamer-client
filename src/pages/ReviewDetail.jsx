@@ -45,24 +45,25 @@ const ReviewDetail = () => {
 
 
     return (
-        <div>
-            <div className="bg-[#9538E2] w-11/12 h-96 mx-auto text-center">
+        <div className="w-11/12 mx-auto">
+            <div className="bg-[#000000] w-11/12 h-96 mx-auto text-center">
                 <h2 className="text-3xl text-white font-bold p-4"> Your Gaming Review </h2>
-                <p className="text-white pb-8">Gaming reviews provide expert insights and ratings to enhance your gaming experience.</p>
+                <p className="text-white pb-8 px-2">Gaming reviews provide expert insights and ratings to enhance your gaming experience.</p>
                 <div className="flex justify-center gap-6 pb-6">
                 </div>
             </div>
-            <div className="lg:flex justify-center h-[500px] max-w-4xl mx-auto bg-[#fbfafa] relative -top-52 p-4 rounded-3xl">
+            <div className="lg:flex justify-center md:h-[500px] max-w-4xl mx-auto bg-[#fbfafa] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500  relative -top-52 p-4 rounded-3xl">
                 <div className="p-4 flex-1/2">
                     <img className="w-full h-full rounded-3xl" src={review.gameCover} alt="" />
                 </div>
                 <div className="p-4 flex-1/2">
                     <h3 className="text-3xl text-[#09080F] font-semibold my-2">Name: {review.gameTitle}</h3>
-                    <p className="text-xl text-gray-700 font-semibold my-2">Publishing Year: {review.publishingYear}</p>
+                    <p className="text-xl text-white font-semibold my-2">Publishing Year: {review.publishingYear}</p>
 
-                    <p className="text-gray-600 my-2"> Genre: {review.genre} </p>
-                    <p className="text-gray-600 my-2"> Name: {review.userName} </p>
-                    <p className="text-gray-600 my-2"> email: {review.userEmail} </p>
+                    <p className="text-black my-2"> <span className="mr-2 text-white bg-gray-600 px-4 text-center items-center rounded-3xl">Review: </span> : {review.reviewDescription} </p>
+                    <p className="text-black my-2"> <span className="mr-2 text-white bg-gray-600 px-2 text-center items-center rounded-3xl">Genre : </span> {review.genre} </p>
+                    <p className="text-black my-2"> <span className="mr-2 text-white bg-gray-600 px-2 text-center items-center rounded-3xl">Name : </span> {review.userName} </p>
+                    <p className="text-black my-2"> <span className="mr-2 text-white bg-gray-600 px-2 text-center items-center rounded-3xl">Email : </span> {review.userEmail} </p>
 
 
                     <div className="flex items-center gap-1">

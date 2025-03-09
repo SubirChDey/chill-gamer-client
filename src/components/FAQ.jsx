@@ -1,10 +1,28 @@
+import { Typewriter } from "react-simple-typewriter"
 
 const FAQ = () => {
     return (
         <div className="w-10/11 max-w-[1300px] mx-auto">
-            <div className="text-center">
+            {/* <div className="text-center">
                 <h3 className="text-3xl">Frequently Ask Questions</h3>
                 <p>Got Questions? We've Got Answers! Explore Our Gaming FAQ for All the Details!" 🎮🔥</p>
+            </div> */}
+            <div className='text-center m-10'>
+                <h3 className='mb-4'>
+                    {" "}
+                    <span className='bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent font-bold text-4xl'>
+                        <Typewriter
+                            words={["Frequently Ask Questions"]}
+                            loop={Infinity}
+                            cursor
+                            cursorStyle="-"
+                            typeSpeed={80}
+                            deleteSpeed={50}
+                            delaySpeed={1000}
+                        />
+                    </span>
+                </h3>
+                <p className='text-center'>Got Questions? We've Got Answers! Explore Our Gaming FAQ for All the Details!" 🎮🔥</p>
             </div>
             <div>
                 <div className="collapse collapse-plus bg-base-100 border border-base-300">

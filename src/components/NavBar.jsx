@@ -66,6 +66,7 @@ const NavBar = () => {
                     <ul className="menu menu-horizontal px-1 gap-2">
                         <NavLink to={'/'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> Home</NavLink>
                         <NavLink to={'/reviews'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> All Reviews</NavLink>
+                        <NavLink to={'/contact'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> Contact </NavLink>
 
                         {
                             user && user?.email ? <div className="relative" ref={spacsRef}>
