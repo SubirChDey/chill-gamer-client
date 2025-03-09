@@ -19,14 +19,14 @@ const Slider = () => {
         return () => clearInterval(interval);
     }, []);
 
-        useEffect(() => {
-            Aos.init({
-                duration: 1000,
-                offset: 50,
-                easing: "ease-in-out",
-                delay: 100,
-            });
-        }, []);
+    useEffect(() => {
+        Aos.init({
+            duration: 1000,
+            offset: 50,
+            easing: "ease-in-out",
+            delay: 100,
+        });
+    }, []);
 
     return (
         <div className="h-[200px] md:h-[500px]">
@@ -37,6 +37,12 @@ const Slider = () => {
                         className={`carousel-item relative w-full md:h-[500px] ${currentSlide === index ? "block" : "hidden"}`}
                     >
                         <img src={img} className="w-full object-cover" alt={`Slide ${index + 1}`} />
+                        <div className="absolute left-0 right-200 top-100 transform -translate-y-1/2">
+                            <div className="text-white backdrop-brightness-600 bg-opacity-80 p-2 rounded-full text-2xl md:text-4xl font-bold text-center">                                
+                                <p className= "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">A Comprehensive Gaming Review Website</p>
+                                
+                            </div>
+                        </div>
                         <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                             <button onClick={() => setCurrentSlide(index === 0 ? totalSlides - 1 : index - 1)} className="btn btn-circle">❮</button>
                             <button onClick={() => setCurrentSlide((index + 1) % totalSlides)} className="btn btn-circle">❯</button>

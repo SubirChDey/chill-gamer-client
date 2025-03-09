@@ -51,7 +51,7 @@ const AllReviews = () => {
 
 
   return (
-    <div className="">
+    <div className="max-w-11/12 mx-auto">
       <div>
         <div>
           <h3 className='text-center mt-6'>
@@ -80,7 +80,7 @@ const AllReviews = () => {
               onChange={handleSortChange}
               className="border border-[#8a1a30] rounded-md p-2"
             >
-              <option value="" disabled selected>Select an Option</option>
+              <option value="" disabled select="true">Select an Option</option>
               
               <option value="rating-asc">Rating (Low to High)</option>
               <option value="rating-desc">Rating (High to Low)</option>
@@ -108,7 +108,7 @@ const AllReviews = () => {
 
       </div>
 
-      <div className="md:grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 px-2">
 
         {
           filteredReviews().map(review => <AllReviewCard key={review._id} review={review}> </AllReviewCard>)

@@ -45,7 +45,7 @@ const UpdateProfile = () => {
                         <input name="photo" type="text" placeholder="Enter your photo link" className="input input-bordered w-full" required />
                     </div>
                     <div className="mt-6 mb-2">
-                        <button className="btn btn-success w-full text-white">Update</button>
+                        <button className="btn btn-success w-full text-white ">Update</button>
                     </div>
                 </form>
             </div>

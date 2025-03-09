@@ -32,8 +32,7 @@ const ReviewDetail = () => {
             body: JSON.stringify(review)
         })
             .then(res => res.json())
-            .then(data => {
-                console.log('Added to favorite', data);
+            .then(data => {                
                 if (data.insertedId) {
                     alert('Data added to watchlist')
                 }
@@ -46,13 +45,13 @@ const ReviewDetail = () => {
 
     return (
         <div className="w-11/12 mx-auto">
-            <div className="bg-[#000000] w-11/12 h-96 mx-auto text-center">
+            <div className="bg-[#000000] w-11/12 h-96 mx-auto text-center shadow-2xl shadow-blue-800">
                 <h2 className="text-3xl text-white font-bold p-4"> Your Gaming Review </h2>
                 <p className="text-white pb-8 px-2">Gaming reviews provide expert insights and ratings to enhance your gaming experience.</p>
                 <div className="flex justify-center gap-6 pb-6">
                 </div>
             </div>
-            <div className="lg:flex justify-center md:h-[500px] max-w-4xl mx-auto bg-[#fbfafa] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500  relative -top-52 p-4 rounded-3xl">
+            <div className="lg:flex justify-center md:h-[500px] max-w-4xl mx-auto bg-[#fbfafa] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500  relative -top-52 p-4 rounded-3xl shadow-2xl shadow-blue-800">
                 <div className="p-4 flex-1/2">
                     <img className="w-full h-full rounded-3xl" src={review.gameCover} alt="" />
                 </div>

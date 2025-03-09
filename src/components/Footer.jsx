@@ -26,7 +26,7 @@ const Footer = () => {
                     <h6 className="footer-title">Social</h6>
                     <a href="https://www.facebook.com/SubirChDey" target="_blank" className="link link-hover"> <img className="w-6" src="https://img.icons8.com/?size=100&id=uLWV5A9vXIPu&format=png&color=000000" alt="" /> </a>
                     <a href="https://www.twitter.com/SubirChDey" target="_blank" className="link link-hover"> <img className="w-6" src="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=000000" alt="" /> </a>
-                    <a href="https://www.instagram.com/SubirChDey" target="_blank" className="link link-hover"><img className="w-6" src="https://img.icons8.com/?size=100&id=119026&format=png&color=000000" alt="" /> </a>
+                    <a href="https://www.instagram.com/SubirChDey" target="_blank" className="link link-hover mb-4"><img className="w-6" src="https://img.icons8.com/?size=100&id=119026&format=png&color=000000" alt="" /> </a>
                 </nav>
             </footer>
         </div>

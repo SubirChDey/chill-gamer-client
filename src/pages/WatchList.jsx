@@ -22,8 +22,7 @@ const WatchList = () => {
   }, []);
 
   const handleWatchlistDelete = (_id) => {
-    console.log("Deleting ID:", _id);
-
+    
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -39,8 +38,6 @@ const WatchList = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
-
             if (data.deletedCount > 0) {
               Swal.fire({
                 title: "Deleted!",
@@ -48,8 +45,7 @@ const WatchList = () => {
                 icon: "success",
               });
              
-              const remaining = watchlists.filter((watch) => watch._id !== _id);
-              console.log(remaining);
+              const remaining = watchlists.filter((watch) => watch._id !== _id);            
               setWatchlists(remaining);
             }
           })

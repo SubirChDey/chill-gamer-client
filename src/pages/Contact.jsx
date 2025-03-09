@@ -50,10 +50,10 @@ const Contact = () => {
           <p>Chill Gamer – Where Every Game Gets the Review It Deserves. Dive into honest, in-depth reviews <br /> that keep you ahead of the game. Your next gaming adventure starts here!</p>
           <p className="text-lg mt-4">
             <span className='font-bold'>Address:</span> <br />
-            1234 Example Street, Suite 5678 <br />
-            City, Country, 12345 <br />
-            <span className='font-bold'>Phone:</span> +1 (234) 567-8900 <br />
-            <span className='font-bold'>Email:</span> <a href="mailto:info@example.com" className="text-blue-500">info@example.com</a>
+            1234 South Chuariakhola, Suite Kaliganj <br />
+            <span>Gazipur, Bangladesh, 1720</span> <br/>
+            <span className='font-bold'>Phone:</span> <span>+8801930-660293</span> <br />
+            <span className='font-bold'>Email:</span> <a href="mailto:info@chillgamer.com" className="text-blue-500">info@chillgamer.com</a>
           </p>
         </div>
       

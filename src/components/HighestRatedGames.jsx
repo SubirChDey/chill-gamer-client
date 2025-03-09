@@ -62,7 +62,7 @@ const HighestRatedGames = () => {
 
             <Zoom triggerOnce>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6  ">
-                    {games.map((review) => (<div key={review._id} className={`bg-[#1A1A1A]  rounded-lg shadow-md hover:shadow-lg p-4  hover:shadow-[#A91D3A] hover:scale-105 transition-all duration-300`} >
+                    {games.map((review) => (<div key={review._id} className={`bg-[#1A1A1A]  rounded-lg  hover:shadow-lg p-4  hover:shadow-[#A91D3A] shadow-lg shadow-red-800 hover:scale-105 transition-all duration-300`} >
                         <div data-aos="fade-up" className='flex flex-col h-full justify-between'>
                             <div>
                                 <img

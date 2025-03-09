@@ -7,10 +7,11 @@ import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
-    const { userLogin, setUser, googleLogin } = useContext(AuthContext)    
+    const { userLogin, setUser, googleLogin } = useContext(AuthContext)
     const location = useLocation();
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
 
     const handleSubmit = (e) => {
@@ -22,18 +23,29 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 setUser(user);
-                Swal.fire({
-                    position: "top-center",
+                Swal.fire({                    
                     icon: "success",
                     title: "Login Successfully",
                     showConfirmButton: false,
                     timer: 1500
                 });
                 navigate(location?.state ? location.state : '/');
-
             })
-            .catch(error => toast.error('Input valid login info'));
-        // .catch(error => showError(error));           
+            .catch(error => {                            
+
+                if (error?.code === "auth/invalid-credential") {
+                    setErrorMessage("Invalid email or password. Please check again!")
+                    toast.error("Invalid email or password. Please check again!");
+                }
+                else if (error?.code === "auth/too-many-requests") {
+                    setErrorMessage("Too many failed attempts. Please try again later!")
+                    toast.error("Too many failed attempts. Please try again later!");
+                }
+                else {
+                    setErrorMessage(`Error: ${error.message}`);
+                    toast.error(`Error: ${error.message}`);
+                }
+            });
 
     };
 
@@ -85,6 +97,12 @@ const Login = () => {
                             <div className="flex flex-col mt-6">
                                 <button type="submit" className="btn bg-primary text-white font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">Login</button>
                             </div>
+
+                            {
+                                errorMessage && (
+                                    <div className="text-red-500 mt-2 text-center"> <p>{errorMessage}</p> </div>
+                                )
+                            }
                         </form>
 
                         <button onClick={() => setShowPassword(!showPassword)} className="btn btn-xs absolute right-10 top-[26%] lg:top-[30.5%]">
