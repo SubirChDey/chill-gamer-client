@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Zoom } from "react-awesome-reveal";
 import Marquee from "react-fast-marquee";
 import { Link, useLoaderData } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
@@ -40,6 +41,7 @@ const LatestGames = () => {
                     <p className='text-center'>Discover New Adventures, Thrilling Challenges, and Endless Fun – Explore Our Latest Games Now!</p>
                 </div>
             </div>
+            <Zoom triggerOnce duration={800}>
             <div className="bg-gray-400">
                 <Marquee pauseOnHover='true' className="">
                     {
@@ -71,6 +73,7 @@ const LatestGames = () => {
                     }
                 </Marquee>
             </div>
+            </Zoom>
 
 
         </div>

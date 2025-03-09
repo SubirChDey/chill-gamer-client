@@ -26,6 +26,7 @@ const Register = () => {
 
         if (!passwordRegex.test(password)) {
             setError("The password must be at least 6 characters long and include at least one uppercase letter and one lowercase letter.");
+            toast.error('Please, fillup password requirements')
             return;
         }
 
@@ -104,6 +105,8 @@ const Register = () => {
                                 <button type="submit" className="btn bg-primary text-white font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">Create Account</button>
                             </div>
                         </form>
+                        <p> {
+                            error ? <p className="text-red-800 px-6"> The password must be at least 6 characters long and include at least one uppercase letter and one lowercase letter. </p> : ''}</p>
 
                         <button onClick={() => setShowPassword(!showPassword)} className="btn btn-xs absolute right-10 top-[43.2%] lg:top-[49.4%]">
 

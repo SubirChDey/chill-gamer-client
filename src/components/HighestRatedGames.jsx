@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import Reveal, { Zoom } from 'react-awesome-reveal';
 import { FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom'
 import { Typewriter } from 'react-simple-typewriter'
+
 
 const HighestRatedGames = () => {
     // const reviews = useLoaderData();
@@ -58,30 +60,32 @@ const HighestRatedGames = () => {
                 <p className='text-center'>Discover the Elite – Only the Highest Rated Games Make the Cut! Explore top-tier games with <br /> unmatched  ratings, crafted to deliver the ultimate gaming experience.</p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6  ">
-                {games.map((review) => (<div key={review._id} className={`bg-[#1A1A1A]  rounded-lg shadow-md hover:shadow-lg p-4  hover:shadow-[#A91D3A] hover:scale-105 transition-all duration-300`} >
-                    <div data-aos="fade-up" className='flex flex-col h-full justify-between'>
-                        <div>
-                            <img
-                                src={review.gameCover}
-                                alt={review.gameTitle}
-                                className="w-full h-48 object-cover rounded-md mb-4  shadow-[#A91D3A]"
-                            />
-                            <h3 className="text-xl font-semibold text-[#A91D3A]">{review.gameTitle}</h3>
-                            <div className="flex justify-between py-2 items-center">
-                                <div className='flex gap-1 items-center'>{renderStars(review.rating)} <div className='text-white ml-4'>{review.rating}</div></div>
-                                <span className="text-gray-400">{review.year}</span>
+            <Zoom triggerOnce>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6  ">
+                    {games.map((review) => (<div key={review._id} className={`bg-[#1A1A1A]  rounded-lg shadow-md hover:shadow-lg p-4  hover:shadow-[#A91D3A] hover:scale-105 transition-all duration-300`} >
+                        <div data-aos="fade-up" className='flex flex-col h-full justify-between'>
+                            <div>
+                                <img
+                                    src={review.gameCover}
+                                    alt={review.gameTitle}
+                                    className="w-full h-48 object-cover rounded-md mb-4  shadow-[#A91D3A]"
+                                />
+                                <h3 className="text-xl font-semibold text-[#A91D3A]">{review.gameTitle}</h3>
+                                <div className="flex justify-between py-2 items-center">
+                                    <div className='flex gap-1 items-center'>{renderStars(review.rating)} <div className='text-white ml-4'>{review.rating}</div></div>
+                                    <span className="text-gray-400">{review.year}</span>
+                                </div>
+                            </div>
+                            <div>
+                                <Link to={`/review/${review._id}`} className="mt-4 inline-block px-6 py-2 bg-[#A91D3A] text-white rounded-md hover:bg-[#9c1631] transition-all duration-300 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 ">
+                                    Explore Details
+                                </Link>
                             </div>
                         </div>
-                        <div>
-                            <Link to={`/review/${review._id}`} className="mt-4 inline-block px-6 py-2 bg-[#A91D3A] text-white rounded-md hover:bg-[#9c1631] transition-all duration-300 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 ">
-                                Explore Details
-                            </Link>
-                        </div>
                     </div>
+                    ))}
                 </div>
-                ))}
-            </div>
+                </Zoom>
 
         </div>
     )
