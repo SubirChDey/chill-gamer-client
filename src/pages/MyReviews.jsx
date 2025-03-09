@@ -64,10 +64,10 @@ const MyReviews = () => {
           });
       }
     });
-  };
-
+  };  
 
   const myReviews = reviews.filter(review => review.userEmail === user.email)
+  
   return (
     <div>
       <div>

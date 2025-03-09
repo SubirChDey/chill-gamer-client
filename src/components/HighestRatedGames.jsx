@@ -16,7 +16,7 @@ const HighestRatedGames = () => {
       const fetchHighestRatedGames = async () => {
         const response = await fetch('http://localhost:5000/highest-rated-games');
         const data = await response.json();
-        setGames(data); // Set the fetched data into the state
+        setGames(data);
       };
   
       fetchHighestRatedGames();

@@ -7,8 +7,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
-    const { userLogin, setUser, googleLogin } = useContext(AuthContext)
-    // const { user, logOut } = useContext(AuthContext)
+    const { userLogin, setUser, googleLogin } = useContext(AuthContext)    
     const location = useLocation();
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
