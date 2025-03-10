@@ -42,7 +42,7 @@ const AddReview = () => {
       timestamp: new Date(),
     };
 
-    fetch("http://localhost:5000/review", {
+    fetch("https://chill-gamer-server-sand.vercel.app/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",

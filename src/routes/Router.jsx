@@ -25,12 +25,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/review'),
+        loader: () => fetch('https://chill-gamer-server-sand.vercel.app/review'),
       },
       {
         path: "/reviews",
         element: <AllReviews></AllReviews>,
-        loader: () => fetch('http://localhost:5000/review'),
+        loader: () => fetch('https://chill-gamer-server-sand.vercel.app/review'),
 
       },
       {
@@ -62,35 +62,28 @@ const router = createBrowserRouter([
         element: <PrivateRoutes>
           <MyReviews></MyReviews>
         </PrivateRoutes>,
-        loader: () => fetch('http://localhost:5000/review'),
+        loader: () => fetch('https://chill-gamer-server-sand.vercel.app/review'),
       },
       {
         path: "/updateReview/:id",
         element: <PrivateRoutes>
           <UpdateReview></UpdateReview>
         </PrivateRoutes>,
-        loader: ({ params }) => fetch(`http://localhost:5000/review/${params.id}`),
+        loader: ({ params }) => fetch(`https://chill-gamer-server-sand.vercel.app/${params.id}`),
       },
       {
         path: "/review/:id",
         element:
           <ReviewDetail></ReviewDetail>,
-        loader: ({ params }) => fetch(`http://localhost:5000/review/${params.id}`),
-        // loader: async ({ params }) => {
-
-        //   const res = await fetch('http://localhost:5173/review')
-        //   const data = await res.json();
-
-        //   const singleReview = data.find(d => d._id == params.id)
-        //   return singleReview
-        // },
+        loader: ({ params }) => fetch(`https://chill-gamer-server-sand.vercel.app/${params.id}`),
+      
       },
       {
         path: "/myWatchlist",
         element: <PrivateRoutes>
           <WatchList></WatchList>
         </PrivateRoutes>,
-        loader: () => fetch('http://localhost:5000/watchlist')
+        loader: () => fetch('https://chill-gamer-server-sand.vercel.app/watchlist')
       },
       {
         path: "/profile",

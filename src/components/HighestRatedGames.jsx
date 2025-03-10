@@ -16,7 +16,7 @@ const HighestRatedGames = () => {
 
     useEffect(() => {
         const fetchHighestRatedGames = async () => {
-            const response = await fetch('http://localhost:5000/highest-rated-games');
+            const response = await fetch('https://chill-gamer-server-sand.vercel.app/highest-rated-games');
             const data = await response.json();
             setGames(data);
         };

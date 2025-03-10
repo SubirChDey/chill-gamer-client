@@ -24,7 +24,7 @@ const ReviewDetail = () => {
         return stars;
     };
     const handleAddToWatchlist = () => {
-        fetch(`http://localhost:5000/watchlist`, {
+        fetch(`https://chill-gamer-server-sand.vercel.app/watchlist`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

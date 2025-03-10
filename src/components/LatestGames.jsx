@@ -14,7 +14,7 @@ const LatestGames = () => {
 
     useEffect(() => {
         const latestGames = async () => {
-            const response = await fetch('http://localhost:5000/latest-games');
+            const response = await fetch('https://chill-gamer-server-sand.vercel.app/latest-games');
             const data = await response.json();
             setGames(data);
         };
