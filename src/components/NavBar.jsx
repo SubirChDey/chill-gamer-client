@@ -39,6 +39,7 @@ const NavBar = () => {
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                             <NavLink to={'/'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> Home</NavLink>
                             <NavLink to={'/reviews'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> All Reviews</NavLink>
+                            <NavLink to={'/contact'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> Contact </NavLink>
                             {
                                 user && user?.email ? <div className="relative" ref={spacsRef}>
                                     <button onClick={() => setShowSpacs(!showSpacs)} className="flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded">
@@ -56,7 +57,9 @@ const NavBar = () => {
                                 </div> : ''
                             }
 
-                            <Link className="flex items-center text-xl gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded"><MdOutlineDarkMode /></Link>
+                            <button onClick={toggleTheme} className="toggle-btn flex items-center text-xl gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded cursor-pointer">
+                                {theme === "light" ? <MdOutlineDarkMode /> : <MdOutlineLightMode />}
+                            </button>
                         </ul>
                     </div>
                     {/* <Link to={'/'} className="btn btn-ghost text-xl"><i>Chill Gamer</i></Link> */}
@@ -70,7 +73,7 @@ const NavBar = () => {
                         <NavLink to={'/'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> Home</NavLink>
                         <NavLink to={'/reviews'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> All Reviews</NavLink>
                         <NavLink to={'/contact'} className={({ isActive }) => ` flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded ${isActive ? "active underline text-red-700" : ""}`}> Contact </NavLink>
-                        
+
                         {
                             user && user?.email ? <div className="relative" ref={spacsRef}>
                                 <button onClick={() => setShowSpacs(!showSpacs)} className="flex items-center text-lg gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded">
@@ -87,10 +90,10 @@ const NavBar = () => {
                                 )}
                             </div> : ''
                         }
-                    
+
                         <button onClick={toggleTheme} className="toggle-btn flex items-center text-xl gap-1 hover:text-red-400 hover:underline-red-800 px-2 rounded cursor-pointer">
-                            {theme === "light" ? <MdOutlineDarkMode /> : <MdOutlineLightMode/>}
-                        </button>                        
+                            {theme === "light" ? <MdOutlineDarkMode /> : <MdOutlineLightMode />}
+                        </button>
 
                     </ul>
                 </div>
