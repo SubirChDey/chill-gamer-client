@@ -1,6 +1,6 @@
 # Chill Gamer - A Game Review Application
 
-## Live Site URL:[https://chill-gamer-sbr.netlify.app/]
+## [Live Site URL](https://chill-gamer-sbr.netlify.app/)
 
 ## About Chill Gamer
 Chill Gamer is a user-friendly game review application where users can explore, share, and manage game reviews. The platform provides an engaging and smooth experience, making it easy to interact with game reviews while ensuring secure authentication and data management.
@@ -42,5 +42,5 @@ Ensure to hide sensitive data by using environment variables for Firebase config
 
 ## Live Site URL:[https://chill-gamer-sbr.netlify.app/]
 
-## Client site Github:[https://github.com/SubirChDey/chill-gamer-client]
-## Server site Github:[https://github.com/SubirChDey/chill-gammer-server]
+## [Client site Github](https://github.com/SubirChDey/chill-gamer-client)
+## [Server site Github](https://github.com/SubirChDey/chill-gammer-server)
