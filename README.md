@@ -1,12 +1,47 @@
-# React + Vite
+# Chill Gamer - A Game Review Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Live Site URL
+[http://localhost:5173/]
 
-Currently, two official plugins are available:
+## About Chill Gamer
+Chill Gamer is a user-friendly game review application where users can explore, share, and manage game reviews. The platform provides an engaging and smooth experience, making it easy to interact with game reviews while ensuring secure authentication and data management.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+1. **User Authentication**: Secure login and registration using email/password authentication and social login (Google/GitHub).
+2. **Game Reviews Management**:
+   - Users can add, update, and delete their own reviews.
+   - All reviews are displayed in a structured manner.
+3. **Game Watchlist**:
+   - Users can add games to their watchlist and manage them.
+4. **Sorting & Filtering**:
+   - Sort reviews based on rating and year.
+   - Filter reviews by genre.
+5. **Responsive & Unique Design**:
+   - Fully responsive for mobile, tablet, and desktop views.
+   - Clean, unique, and user-friendly UI.
+6. **Dark/Light Theme Toggle**:
+   - Users can switch between dark and light modes.
+7. **Interactive UI Components**:
+   - Implemented animations using Lottie React, React Tooltip, and other UI enhancement libraries.
 
-## Expanding the ESLint configuration
+## Tech Stack
+- **Frontend**: React, React Router, Tailwind CSS
+- **Backend**: Node.js, Express.js, MongoDB
+- **Authentication**: Firebase Authentication
+- **Hosting**:
+  - Client-side: Netlify/Surge/Firebase
+  - Server-side: Vercel
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+## Environment Variables
+Ensure to hide sensitive data by using environment variables for Firebase configuration and MongoDB credentials.
+
+## Deployment
+- **Frontend**: Deployed on Netlify
+- **Backend**: Deployed on Vercel
+
+## Live Site URL[http://localhost:5173/]
+
+## Client site Github[http://localhost:5173/]
+## Server site Github[http://localhost:5000/]

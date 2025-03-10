@@ -2,11 +2,7 @@ import { Typewriter } from "react-simple-typewriter"
 
 const FAQ = () => {
     return (
-        <div className="w-10/11 max-w-[1300px] mx-auto">
-            {/* <div className="text-center">
-                <h3 className="text-3xl">Frequently Ask Questions</h3>
-                <p>Got Questions? We've Got Answers! Explore Our Gaming FAQ for All the Details!" 🎮🔥</p>
-            </div> */}
+        <div className="w-10/11 max-w-[1300px] mx-auto">            
             <div className='text-center m-10'>
                 <h3 className='mb-4'>
                     {" "}
