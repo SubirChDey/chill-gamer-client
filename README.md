@@ -6,7 +6,7 @@
 Chill Gamer is a user-friendly game review application where users can explore, share, and manage game reviews. The platform provides an engaging and smooth experience, making it easy to interact with game reviews while ensuring secure authentication and data management.
 
 ## Features
-1. **User Authentication**: Secure login and registration using email/password authentication and social login (Google/GitHub).
+1. **User Authentication**: Secure login and registration using email/password authentication and social login (Google).
 2. **Game Reviews Management**:
    - Users can add, update, and delete their own reviews.
    - All reviews are displayed in a structured manner.
@@ -40,7 +40,7 @@ Ensure to hide sensitive data by using environment variables for Firebase config
 - **Frontend**: Deployed on Netlify
 - **Backend**: Deployed on Vercel
 
-## Live Site URL:[https://chill-gamer-sbr.netlify.app/]
+## [Live Site URL](https://chill-gamer-sbr.netlify.app/)
 
 ## [Client site Github](https://github.com/SubirChDey/chill-gamer-client)
 ## [Server site Github](https://github.com/SubirChDey/chill-gammer-server)
